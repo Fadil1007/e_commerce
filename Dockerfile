@@ -1,8 +1,9 @@
 # Utiliser PHP 8.0 CLI
 FROM php:8.0-cli
 
-# Installer les dépendances nécessaires
-RUN apt-get update && apt-get install -y \
+# Mettre à jour les sources et installer les dépendances nécessaires
+RUN apt-get update && apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     unzip \
     git \
     curl \
