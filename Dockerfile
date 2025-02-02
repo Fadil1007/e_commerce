@@ -2,25 +2,23 @@
 FROM php:8.0-cli
 
 # Mettre à jour les sources et installer les dépendances nécessaires
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     unzip \
     git \
     curl \
     libzip-dev \
     libpq-dev \
     libpng-dev \
-    libjpeg-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev \
     libonig-dev \
-    libicu-dev \
-    pkg-config \  
+    pkg-config \
+    libicu-dev \  # Ajout pour résoudre l'erreur ICU
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring gd intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-# Vérification de ICU et pkg-config
-RUN dpkg -l | grep libicu && pkg-config --modversion icu-uc || echo "ICU non trouvé"
 
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -32,9 +30,11 @@ WORKDIR /app
 # Copier tous les fichiers du projet dans le conteneur
 COPY . .
 
-# Fixer les permissions
-RUN chown -R www-data:www-data /app \
-    && chmod -R 777 /app/var /app/vendor
+# Vérifier l'existence de `vendor` avant de modifier les permissions
+RUN if [ -d "/app/vendor" ]; then \
+        chown -R www-data:www-data /app && \
+        chmod -R 777 /app/var /app/vendor; \
+    fi
 
 # Nettoyer et installer les dépendances Composer
 RUN composer clear-cache
