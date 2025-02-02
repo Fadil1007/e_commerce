@@ -19,7 +19,8 @@ WORKDIR /app
 COPY . .
 
 # Installer les dépendances via Composer
-RUN composer install --ignore-platform-reqs
+RUN composer install --ignore-platform-reqs --no-progress --verbose
+
 
 # Exposer le port sur lequel Symfony écoutera
 EXPOSE 80
