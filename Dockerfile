@@ -1,5 +1,5 @@
-# Utiliser PHP 8.0 CLI
-FROM php:8.0-cli
+# Utiliser PHP 8.2 CLI
+FROM php:8.2-cli
 
 # Mettre à jour les sources et installer les dépendances nécessaires
 RUN apt-get update && apt-get upgrade -y && \
