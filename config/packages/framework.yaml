@@ -1,0 +1,23 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    validation: { enabled: true }
+
+    # Note that the session will be started ONLY if you read or write from it.
+    session:
+        storage_factory_id: session.storage.factory.native
+        cookie_lifetime: 86400
+        cookie_secure: auto
+        cookie_samesite: lax
+        gc_maxlifetime: 86400
+        
+    # Note that the cache will be used ONLY if you read or write from it.
+    cache: true
+    #esi: true
+    #fragments: true
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

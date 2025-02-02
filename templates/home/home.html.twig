@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <main class="container flex-grow-1">
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container pt-3">
+                <div class="hero">
+                    <h1>🏆 Bienvenue chez <span class="brand">Stubborn</span></h1>
+                    <p class="subtitle">L’Excellence du Sweat-Shirt</p>
+                </div>
+
+                <section class="section-intro">
+                    <h2>👕 Découvrez <span class="highlight">notre univers</span></h2>
+                </section>
+                <p class="lead pt-3 text-justify">Chez Stubborn, le style ne se sacrifie jamais. Nos sweat-shirts, alliant confort, qualité et caractère, réinventent votre look.
+
+                Plongez dans notre boutique en ligne et révélez votre singularité avec des pièces uniques, pensées pour ceux qui osent se démarquer!</p>
+                <section class="best-sellers">
+                    <h2>⭐ Nos Meilleures Ventes</h2>
+                    <p>Découvrez nos modèles iconiques mis en avant :</p>
+                    <a href="{{ path('app_login') }}" class="nav-link {% if path == 'login'%} active {% endif %}">
+                        <div class="products">
+                            <div class="product">
+                                <img src="{{ asset('build/images/1.jpeg') }}" alt="Blackbelt">
+                                <h3>Blackbelt</h3>
+                                <p>Élégant et intemporel</p>
+                            </div>
+                            <div class="product">
+                                <img src="{{ asset('build/images/4.jpeg') }}" alt="Pokeballt">
+                                <h3>Pokeball</h3>
+                                <p>Un design audacieux pour les fans</p>
+                            </div>
+                            <div class="product">
+                                <img src="{{ asset('build/images/9.jpeg') }}" alt="BornInUsa">
+                                <h3>BornInUsa</h3>
+                                <p>L’esprit américain dans un sweat</p>
+                            </div>
+                        </div>
+                    </a>    
+                    <p class="cta">👉 Explorez notre collection et trouvez votre style unique !</p>
+                </section>
+
+                <section class="why-stubborn">
+                    <h2>🛍 Pourquoi choisir Stubborn ?</h2>
+                    <ul>
+                        <li>Qualité premium</li>
+                        <li>Designs uniques et modernes</li>
+                        <li>Disponible en toutes tailles (XS à XL)</li>
+                        <li>Paiement sécurisé avec Stripe</li>
+                    </ul>
+                </section>
+
+                <p class="call-to-action">🎯 Rejoignez-nous dès aujourd’hui et affirmez votre style avec Stubborn !</p>
+
+
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="{{ product.image ? asset('uploads/' ~ product.image) : asset('images/load_placeholder.png') }}" class="card-img-top" alt="Product image">
+                        <div class="card-footer d-flex justify-content-between p-3">
+                            <div>
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Prix : {{ product.price }} €</p>
+                            </div>
+                            {% if app.user %}   
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="/product/{{ product.id }}" class="btn btn-warning">Voir</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+{% endblock %}

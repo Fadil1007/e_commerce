@@ -1,0 +1,321 @@
+body{
+  background-color: #EAEDED;
+}
+
+.active{
+  color: #0B5ED7 !important;
+  text-decoration: underline;
+  font-weight: bold;
+  background: transparent !important;
+}
+
+.image-file__container{
+  width: 200px;
+  height: 300px;
+
+  & .image{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .3rem;
+    border : 2px dashed #aaacaf;
+    border-radius: 10px;
+
+    & img{
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  & .input-file{
+    height: 10%;
+    margin-top: 10px;
+  }
+}
+
+input[type=file] {
+  width: 100%;
+  height: 100%;
+  font-size: .8rem;
+  border-radius: 5px;
+}
+
+.product-form{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.form-error{
+  background-color: red;
+}
+
+.has-error {
+  border: 1px solid red;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.bg-card-white{
+  background-color: #ffffff;
+}
+
+/* 🌟 Palette de couleurs Stubborn */
+:root {
+  --primary-color: #C8A47E;  /* Couleur principale */
+  --secondary-color: #D9D9D9; /* Gris clair */
+  --text-color: #2E2E2E;     /* Noir/gris foncé */
+  --button-color: #8E6E53;   /* Marron Stubborn */
+  --button-hover: #755B42;   /* Marron foncé */
+}
+
+/* 📌 Style de l'en-tête */
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
+  padding: 60px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* 🎯 Titre animé */
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero .brand {
+  color: var(--button-color);
+  text-shadow: 2px 2px 5px rgba(142, 110, 83, 0.5);
+}
+
+/* ✨ Sous-titre */
+.hero .subtitle {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* 🎯 Bouton stylisé */
+.btn-explore {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: var(--button-color);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(142, 110, 83, 0.5);
+}
+
+.btn-explore:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+}
+
+/* 📌 Section d'introduction */
+.section-intro {
+  text-align: center;
+  margin: 50px auto;
+  padding: 30px;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 1s ease-in-out;
+  max-width: 800px;
+}
+
+/* 🎯 Style du texte */
+.section-intro h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.section-intro .highlight {
+  color: var(--button-color);
+}
+
+/* 🌟 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Styles généraux */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+/* Section Présentation */
+/*presentation {
+  text-align: center;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+  padding: 60px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.presentation h2 {
+  font-size: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+.presentation p {
+  font-size: 20px;
+  color: white;
+  line-height: 1.8;
+}*/
+
+/* Section Meilleures Ventes */
+.best-sellers {
+  text-align: center;
+  background-color: #fff;
+  padding: 50px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.best-sellers h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.best-sellers .products {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.product {
+  text-align: center;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.product:hover {
+  transform: scale(1.05);
+}
+.product img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.product h3 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+.product p {
+  font-size: 16px;
+  color: #666;
+}
+.best-sellers .cta {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Section Pourquoi choisir Stubborn */
+.why-stubborn {
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 50px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.why-stubborn h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.why-stubborn ul {
+  list-style: none;
+  padding: 0;
+}
+.why-stubborn ul li {
+  font-size: 18px;
+  color: #555;
+  padding: 8px 0;
+}
+.why-stubborn ul li::before {
+  content: "✅ ";
+  color: green;
+  font-weight: bold;
+}
+
+/* Appel à l'action */
+.call-to-action {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 40px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-text, .footer-address, .footer-email, .footer-rights {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-email a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-email a:hover {
+  text-decoration: underline;
+}
+
+.footer-rights {
+  font-size: 12px;
+  color: #bbb;
+}
+
+
+
+
+
+
+
+
+
+
