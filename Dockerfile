@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libonig-dev \
     libicu-dev \
-    pkg-config \  # Ajout de pkg-config pour détecter ICU
+    pkg-config \  
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring gd intl \
     && apt-get clean \
