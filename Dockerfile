@@ -2,21 +2,23 @@
 FROM php:8.0-cli
 
 # Mettre à jour les sources et installer les dépendances nécessaires
-RUN apt-get update && apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     git \
     curl \
     libzip-dev \
     libpq-dev \
     libpng-dev \
-    libjpeg62-turbo-dev \
+    libjpeg-dev \
     libfreetype6-dev \
     libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring gd intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Vérification des paquets installés
+RUN dpkg -l | grep -E 'libzip-dev|libpq-dev|libpng-dev|libjpeg-dev|libfreetype6-dev|libonig-dev'
 
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
