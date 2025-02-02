@@ -14,7 +14,8 @@ RUN apt-get update && apt-get upgrade -y && \
     libfreetype6-dev \
     libonig-dev \
     pkg-config \
-    libicu-dev \  # Ajout pour résoudre l'erreur ICU
+    libicu-dev \
+    # Ajout pour résoudre l'erreur ICU
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring gd intl \
     && apt-get clean \
@@ -30,11 +31,9 @@ WORKDIR /app
 # Copier tous les fichiers du projet dans le conteneur
 COPY . .
 
-# Vérifier l'existence de `vendor` avant de modifier les permissions
-RUN if [ -d "/app/vendor" ]; then \
-        chown -R www-data:www-data /app && \
-        chmod -R 777 /app/var /app/vendor; \
-    fi
+# Fixer les permissions
+RUN chown -R www-data:www-data /app \
+    && chmod -R 777 /app/var /app/vendor
 
 # Nettoyer et installer les dépendances Composer
 RUN composer clear-cache
