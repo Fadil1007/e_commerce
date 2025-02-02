@@ -12,13 +12,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg-dev \
     libfreetype6-dev \
     libonig-dev \
+    libicu-dev \
+    pkg-config \  # Ajout de pkg-config pour détecter ICU
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring gd intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Vérification des paquets installés
-RUN dpkg -l | grep -E 'libzip-dev|libpq-dev|libpng-dev|libjpeg-dev|libfreetype6-dev|libonig-dev'
+# Vérification de ICU et pkg-config
+RUN dpkg -l | grep libicu && pkg-config --modversion icu-uc || echo "ICU non trouvé"
 
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
