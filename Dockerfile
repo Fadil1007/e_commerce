@@ -3,14 +3,14 @@ FROM php:8.0-cli
 
 # Mettre à jour les sources et installer les dépendances nécessaires
 RUN apt-get update && apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     unzip \
     git \
     curl \
     libzip-dev \
     libpq-dev \
     libpng-dev \
-    libjpeg-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev \
     libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
