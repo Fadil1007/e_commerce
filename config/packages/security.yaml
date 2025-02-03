@@ -14,7 +14,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         public:
-            pattern: ^/(login|register)/
+            pattern: ^/(login|register)(/|$)
             security: false
         main:
             lazy: true
