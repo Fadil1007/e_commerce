@@ -87,8 +87,8 @@
             "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
-            
+            "@auto-scripts",
+            "php bin/console doctrine:fixtures:load --no-interaction"
         ],
         "post-update-cmd": [
             "@auto-scripts"
