@@ -1,1 +1,1 @@
-web: symfony server:start --no-interaction
+web: vendor/bin/heroku-php-apache2 public
