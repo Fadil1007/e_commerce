@@ -87,8 +87,8 @@
             "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts",
-            "php bin/console app:setup-database"
+            "@auto-scripts"
+            
         ],
         "post-update-cmd": [
             "@auto-scripts"
