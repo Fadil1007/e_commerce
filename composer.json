@@ -1,4 +1,6 @@
 {
+    "name": "mon-vendeur/e-commerce_stubborn",
+    "description": "Un projet Symfony pour une boutique en ligne",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -98,7 +100,7 @@
             "php bin/phpunit",
             "php bin/console doctrine:database:drop --env=test --force"
         ]
-  },
+    },
     "conflict": {
         "symfony/symfony": "*"
     },
