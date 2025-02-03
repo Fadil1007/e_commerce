@@ -23,8 +23,6 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        dump($request->request->all()); // Ajoute cette ligne
-        die('Requête reçue'); // Stoppe l'exécution pour voir si ça passe ici
         // Retrieve the last authentication error, if any
         $error = $authenticationUtils->getLastAuthenticationError();
         // Retrieve the last username entered by the user
