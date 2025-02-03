@@ -88,7 +88,7 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "php bin/console doctrine:fixtures:load --no-interaction"
+            "@php -r \"if (getenv('APP_ENV') !== 'prod') { passthru('php bin/console doctrine:fixtures:load --no-interaction'); }\""
         ],
         "post-update-cmd": [
             "@auto-scripts"
